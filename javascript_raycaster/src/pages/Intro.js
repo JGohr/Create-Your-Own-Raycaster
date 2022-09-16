@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router';
 import './Intro.css';
+import Header from '../comps/Header';
 
 function Intro() {
 
@@ -7,16 +8,7 @@ function Intro() {
 
     return(
         <div className="intro">
-            <header className='intro-header'>
-                <div className='header-title'>
-                    <h1>Create Your Own Raycaster</h1>
-                    <h2>Direct questions to <a href='https://twitter.com/devByPura'>@devByPura</a></h2>
-                </div>
-                <div className='header-links'>
-                    <a href='https://github.com/JGohr/TileMap-Raycaster'>Github Repo</a>
-                    <a onClick={() => {navigate('/demo')}} href=''>Demo</a>
-                </div>
-            </header>
+            <Header />
             <div className='intro-body'>
                 <div className="learning-text-box">
                     <h1 className='learning-text-title'>A Brief Overview On Raycasting</h1>

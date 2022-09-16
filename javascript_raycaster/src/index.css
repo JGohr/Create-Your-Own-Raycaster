@@ -34,6 +34,12 @@ header
     box-shadow: 0 2px 2px 0 black;
 }
 
+img
+{
+    width: 900px;
+    margin-left: 4vw;
+}
+
 .learning-text-box
 {
     margin: 4vh 0;
@@ -42,9 +48,14 @@ header
     width: 60vw;
 }
 
+.learning-text-title
+{
+    margin-bottom: 1vh;
+}
+
 .learning-text-body
 {
-    font-weight: 400;
+    display: block;
 }
 
 .learning-button

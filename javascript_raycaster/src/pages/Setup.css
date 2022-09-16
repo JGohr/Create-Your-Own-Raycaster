@@ -1,0 +1,14 @@
+.setup
+{
+    background-color: #151515;
+}
+
+#setup-list
+{
+    margin-top: 2vh;
+}
+
+#setup-list > li
+{
+    font-size: 1.1rem;
+}
