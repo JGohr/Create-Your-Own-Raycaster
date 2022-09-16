@@ -4,36 +4,10 @@
     position: relative;
 }
 
-.intro-header
-{
-    background-color: #0A0A0A;
-    color: #F5FEFD;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 10vh;
-    padding: 0 2vw;
-}
-
 .intro-body
 {
     height: auto;
-}
-
-.intro-header-title > h1
-{
-    font-size: 1.5rem;
-}
-
-.intro-header-title > h2
-{
-    font-size: 1rem;
-}
-
-.intro-header-links
-{
-    display: flex;
-    gap: 1vw;
+    padding-bottom: 2vh;
 }
 
 .learning-text-title

@@ -24,21 +24,34 @@ header
 {
     position: sticky;
     top: 0;
+    background-color: #0A0A0A;
+    color: #F5FEFD;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    padding: 0 2vw;
+    box-shadow: 0 2px 2px 0 black;
 }
 
 .learning-text-box
 {
     margin: 4vh 0;
-    padding: 0 2vw;
+    padding: 0 0 0 4vw;
     color: #F5FEFD;
     width: 60vw;
 }
 
+.learning-text-body
+{
+    font-weight: 400;
+}
+
 .learning-button
 {
-    margin: 0 2vw 2vh 2vw;
-    height: 3vh;
-    width: 125px;
+    margin: 0 2vw 2vh 4vw;
+    height: 3.5vh;
+    width: 150px;
     cursor: pointer;
     background-color: #00f8a3;
     font-weight: 700;
@@ -48,9 +61,38 @@ header
 
 .learning-nav-box
 {
-    width: 10vw;
-    background-color: aqua;
-    position: sticky;
+    width: 15vw;
+    background-color: #0a0a0a;
+    position: fixed;
     top: 18vh;
     left: 80vw;
+    padding: 1rem 0;
+    border-radius: 4px;
+}
+
+.nav-box-list
+{
+    list-style-type: none;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    color: #F5FEFD;
+    margin: 0 1vw;
+}
+
+.header-title > h1
+{
+    font-size: 1.5rem;
+}
+
+.header-title > h2
+{
+    font-size: 1rem;
+}
+
+.header-links
+{
+    display: flex;
+    gap: 1vw;
 }

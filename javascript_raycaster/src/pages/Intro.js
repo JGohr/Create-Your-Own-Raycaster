@@ -8,22 +8,16 @@ function Intro() {
     return(
         <div className="intro">
             <header className='intro-header'>
-                <div className='intro-header-title'>
+                <div className='header-title'>
                     <h1>Create Your Own Raycaster</h1>
                     <h2>Direct questions to <a href='https://twitter.com/devByPura'>@devByPura</a></h2>
                 </div>
-                <div className='intro-header-links'>
+                <div className='header-links'>
                     <a href='https://github.com/JGohr/TileMap-Raycaster'>Github Repo</a>
                     <a onClick={() => {navigate('/demo')}} href=''>Demo</a>
                 </div>
             </header>
             <div className='intro-body'>
-                <div className='learning-nav-box'>
-                    Nav Box
-                    <ul className='nav-box-list'>
-
-                    </ul>
-                </div>
                 <div className="learning-text-box">
                     <h1 className='learning-text-title'>A Brief Overview On Raycasting</h1>
                     <p className='learning-text-body'>Raycasting: A computer graphics rendering technique used to bring 2D maps alive 
@@ -42,12 +36,14 @@ function Intro() {
                 </div>
                 <div className="learning-text-box">
                     <h1 className='learning-text-title'>Concepts Used In This Article</h1>
+                    <p className='learning-text-body'>We're going to be covering a few basic math concepts within this tutorial. If any of these
+                    concepts seem unknown, I'd reccomend using these resources as a refresher.<br/><br/></p>
                     <ul className='learning-text-list'>
-                        <li>Pythagorean Theorem || <a href=''>Youtube</a> or <a href="">Article</a></li>
-                        <li>2D Vectors || <a href=''>Youtube</a> or <a href="">Article</a></li>
-                        <li>Scalar Projection || <a href=''>Youtube</a> or <a href="">Article</a></li>
-                        <li>Rotating Vectors w/ Rotation Matrix || <a href=''>Youtube</a> or <a href="">Article</a></li>
-                        <li>DDA Line Drawing Algorithm || <a href=''>Youtube</a> or <a href="">Article</a></li>
+                        <li>Pythagorean Theorem - <a href="https://www.youtube.com/watch?v=uthjpYKD7Ng&ab_channel=MathHelp.com" target={"_blank"}>Youtube</a> or <a href="https://byjus.com/maths/pythagoras-theorem/" target={"_blank"}>Article</a></li>
+                        <li>2D Vectors - <a href='https://www.youtube.com/watch?v=wXI9_olSrqo&ab_channel=Brackeys' target={"_blank"}>Youtube</a> or <a href="https://www.gamedev.net/articles/programming/math-and-physics/practical-use-of-vector-math-in-games-r2968/" target={"_blank"}>Article</a></li>
+                        <li>Scalar Projection - <a href='https://www.youtube.com/watch?v=_ENEsV_kNx8&ab_channel=TheCodingTrain' target={"_blank"}>Youtube</a> or <a href="https://www.nagwa.com/en/explainers/792181370490/" target={"_blank"}>Article</a></li>
+                        <li>Rotating Vectors w/ Rotation Matrix - <a href='https://www.youtube.com/watch?v=a59YQ4qe7mE&ab_channel=Udacity' target={"_blank"}>Youtube</a> or <a href="https://en.wikipedia.org/wiki/Rotation_matrix" target={"_blank"}>Article</a></li>
+                        <li>DDA Line Drawing Algorithm - <a href='https://www.youtube.com/watch?v=W5P8GlaEOSI&ab_channel=AbdulBari' target={"_blank"}>Youtube</a> or <a href="https://medium.com/geekculture/dda-line-drawing-algorithm-be9f069921cf" target={"_blank"}>Article</a></li>
                     </ul>
                 </div>
                 <div className='learning-text-box'>
