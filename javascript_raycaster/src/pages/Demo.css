@@ -8,11 +8,18 @@
     background: #0A0A0A;
 }
 
+#demo-header
+{
+    font-size: 1.5rem;
+}
+
 .demo-buttons
 {
     margin-top: 3vh;
     display: flex;
     gap: 1vh;
+    align-self: center;
+    gap: 2vw;
 }
 
 .demo-buttons > button
@@ -20,7 +27,7 @@
     background-color: #00f8a3;
     border: none;
     border-radius: 4px;
-    width: 125px;
+    width: 150px;
     height: 35px;
     font-weight: 700;
 }
@@ -30,4 +37,23 @@
     color: #F5FEFD;
     text-align: center;
     margin-bottom: 5vh;
+}
+
+.landing-content
+{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center; 
+    color: #F5FEFD;
+}
+
+.landing-content > h1
+{
+    font-size: 3rem;
+}
+
+.landing-content > p
+{
+    font-size: 1.5rem;
 }

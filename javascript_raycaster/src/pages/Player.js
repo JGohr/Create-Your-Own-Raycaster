@@ -37,17 +37,12 @@ import img_36 from '../images/P_IC/Creating The Input Controller/IC_31.png';
 import matrix from '../images/P_IC/Creating The Input Controller/matrix.svg';
 
 import Header from '../comps/Header.js';
-/*
-
-        <div className='learning-text-box'>
-            <h1 className='learning-text-title'>Lesson Introduction</h1>
-            <p></p>
-        </div>
-        <img src={} alt='' />
-
-*/
+import { useNavigate } from 'react-router';
 
 function Player() {
+
+    let navigate = useNavigate();
+
     return (<div className="player">
         <Header />
         <div className='learning-text-box'>
@@ -273,6 +268,299 @@ function Player() {
                 
         This function is gonna be using something called a rotation matrix.</p>
         <img src={matrix} alt="rotation matrix" style={{background: 'white'}} />
+        <p className='learning-text-box'>
+        This may seem daunting at first but it can be mapped to code fairly easy.<br/><br/>
+
+        All we are doing is taking our initial player direction values and multiplying them by either cosine or sin of the angle we want.<br/><br/>
+
+        Our final product will be two rotated x and y values in coordiante space.<br/><br/>
+
+        Let me show you the helper function in code so you can compare to the snippet above and hopefully see the resemblence.
+        </p>
+        <img src={img_16} alt="rotate vector function" />
+        <p className='learning-text-box'>
+        Since we don’t want to modify the existing vector passed in, we start by creating a newVector object to return on completion.<br/><br/>
+
+        Paying close attention to the newVector assignment lines, we can see the arithmetic is identical to the right side of the rotation matrix snippet.<br/><br/>
+
+        Given the initial values of our direction vector and a radian value to rotate by (theta), we multiply 
+        both x and y by the corresponding matrix formula to retrieve a rotated version of the vector.<br/><br/>
+
+        Imagine every time you want to rotate a vector you got to type out THAT, no thanks.<br/><br/>
+
+        We got some helpers implemented so let's get back to the goal in mind.<br/><br/>
+
+        Moving A and D will not differ that much from W and S.<br/><br/>
+
+        With W and S we added our position and direction objects, then multiplied by a speed constant.<br/><br/>
+        For A and D we can now cache a rotated version of our direction vector by either 90 degrees for right and -90 degrees for left.<br/><br/>
+
+        Now we just do the same code as before, just substituting our current direction vector for the newly rotated version. 
+        </p>
+        <img src={img_17} alt="Key A and D input controller" />
+        <p className='learning-text-box'>
+        Head back over to our canvas and we should now be able to move in all directions, including diagonals!<br/><br/>
+
+        Onto rotating our player.<br/><br/>
+
+        We want to be able to rotate our player using our left and right arrow keys.<br/><br/>
+
+        Pressing left will rotate the player direction in a negative angle increment. Pressing right will 
+        perform the same exact way just swapping the signage of our increment to be positive.<br/><br/>
+
+        Let's go to our player object and store this increment, I'll be calling it rotSpeed and giving it a value of .07<br/><br/>
+
+        Remember, if that key is pressed this increment will be added 60 times per second, so keep that in mind when tweaking this program for your own use.
+        </p>
+        <img src={img_18} alt="player rotation speed property" />
+        <p className='learning-text-box'>
+        Heading back to our inputController, we should have two key values pairs with the following keycodes: ArrowLeft and ArrowRight<br/><br/>
+
+        Since we don't want to directly interact with our Players direction vector when doing these calculations, let's create a newDirection vector object.<br/><br/>
+
+        We then assign the rotated version of our direction vector (using our helper function) to our newDirection object.<br/><br/>
+
+        Remember, when using the Player.rotSpeed property to assign the correct signage.<br/><br/>
+
+        Assign the  new direction to our player direction and we’re done!
+        </p>
+        <img src={img_19} alt="player rotation speed property" />
+        <p className='learning-text-box'>
+        We can verify our rotation is working by using console.log().
+
+        Later on when we render the rays being casted from the player it will become clear but for now just add a quick log inside each arrows function call.<br/><br/>
+
+        Heading over to the canvas, we have the ability to move in all directions AND rotate our players direction smoothly! Awesome,
+         we are really making some progress here.<br/><br/>
+
+        There's one last thing we need to add to our input controller, which is having the ability to draw tiles.<br/><br/>
+
+        We need a way to track the mouse position of our player. To be more specific, 
+        we need to be able to track the exact cell in our map that our mouse is over.<br/><br/>
+
+        This approach may be a bit hacky but it definitely gets the job done AND it's super easy to implement!<br/><br/>
+
+        The objective here is to obtain a x and y coordinate related to the position of our cursor in the tile map. 
+        This will allow us to index our array using the same method for our drawMap function.<br/><br/>
+
+        <b>Overview of how we can achieve this:</b><br/>
+
+        Using the ‘mousemove’ event listener, we can trigger a function call. Using IIFEs we can pass 
+        the event object from that mouse move directly to the function.<br/><br/>
+
+        This event object will give us the exact X and Y position of our mouse on the screen.<br/><br/>
+
+        Here's where things get a little hackish.<br/><br/>
+
+        We can then use a built in method on our canvas called getBoundingClientRect(), this will return a object that holds some useful values.<br/><br/>
+
+        Such as: .left, .right. .top, .bottom. These are the space in pixels that our canvas is offset from the viewport.<br/><br/>
+
+        For example, if our screen is 1000px wide and our canvas is centered and 500px wide.
+        getBoundingClientRect() left and right values would be 250px each since there is 250px on either side of the canvas.<br/><br/>
+
+        For a better understanding of getBoundingClientRect visit here: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect">MDN getBoundingClientRect</a><br/><br/>
+
+        We can take our mouse position, subtract the canvas left and top values to get our position 
+        within the actual tile map, assuming we are in it.<br/><br/>
+
+        Lastly, like stated before we want to get the grid coordinates of our mouse position, 
+        so we can divide both values by our cellSize and cast them to a int to remove any floating points.<br/><br/>
+
+        We can then access any cell within our grid using the same indexing syntax as our drawMap, this time substituting for our mouseCell.
+        worldMap[mouseCell.y * mapWidth + mouseCell.x]<br/><br/>
+
+        Okay that was alot, let's try and put this into code.<br/><br/>
+
+        Let's create a mouseCell property in our Player to keep track of what cell we're in.
+        </p>
+        <img src={img_20} alt="player mouse cell property" />
+        <p className='learning-text-box'>
+        We will need a function to call whenver this mousemove event happens so let’s tackle that first.<br/><br/>
+
+        Start by creating a function called updateMousePosition. This will take receive a mousemove event from our event listener. We can call this ‘e’.
+        </p>
+        <img src={img_21} alt="update mouse position function" />
+        <p className='learning-text-box'>
+        We are going to need access to the object returned by canvas.getBoundingClientRect() 
+        but we don’t need to re-call this method everytime our updateMousePosition is called.<br/><br/>
+
+        Let’s declare a canvasRect variable at the top of our code and assign the returned object when our Init function is called.
+        </p>
+        <img src={img_22} alt="canvas rect declaration" />
+        <p className='learning-text-box'>
+        Time to implement our updateMousePosition function.<br/><br/>
+
+        To start, let’s create a object name “tmpMouseCell” containing x and y properties,
+         this will be the object we return to the player after calculations.<br/><br/>
+
+        The event we passed to this function, represented as 'e' 
+        has two values we can use to track our mouse position: clientX and clientY.<br/><br/>
+
+        We can subtract canvasRect.left from our e.clientX & canvasRect.top 
+        from our e.clientY to get the exact position within our map.<br/><br/>
+
+        This results in our position in 2D space though, 
+        we need these values to be converted down to coordinates in our grid.<br/><br/>
+
+        Easy enough, if we just divide both values by cellSize we get a float with the exact coordinate
+         for each axis. We can cast these to an integer to remove the remaining floating point (if any).<br/><br/>
+
+        Assign this tmpMouseCell to Player.mouseCell and we're done!
+        </p>
+        <img src={img_23} alt="update mouse implementation" />
+        <p className='learning-text-box'>
+        With our mouse cell now being tracked, we can look back into our inputController
+         and inside our mousedown key function we can index into our worldMap array. <br/><br/>
+
+        We do need to perform one check though to avoid unwanted draws.<br/><br/>
+
+        Based on the way we are tracking our mouse cell, we could get some x or y values
+         that are greater or less than what our array can be indexed as.<br/><br/>
+
+        We wouldn’t want to try and access worldMap[-15] or worldMap[478].<br/><br/>
+
+        This can be resolved using a simple conditional before assigning the indexs value to 1.
+        </p>
+        <img src={img_24} alt="mousedown function" />
+        <p className='learning-text-box'>
+        Now going to our Init() function, assign an event listener for whenever the mouse moves.<br/><br/>
+        Using IIFEs we can pass the event object into a updateMousePosition function like so:
+        </p>
+        <img src={img_25} alt="init function updatemouse position" />
+        <p className='learning-text-box'>
+        Let's head over to our canvas and see if everything's working. You should be able to click or even drag to paint cells into your tile map!<br/><br/>
+
+        Initially, I could only click individual cells. Performing tile inserts this way just provides a better user experience.<br/><br/>
+
+        Okay, having the ability to move, rotate and paint cells is great! But we definitely have some loose ends we need to tie up.<br/><br/>
+
+        Three things:<br/>
+            1. We need a way to reset the map whenever we want<br/>
+            2. We want to create a border upon generating the map<br/>
+            3. Since we are going to be rendering all of this into a 3D like view, we want a way for the player to collide with any cells.<br/><br/>
+
+        We can handle the map reset and border generation fairly easy.<br/><br/>
+
+        Since our world map is stored as an array, we can create a generateMap function which returns a newly created array.<br/><br/>
+
+        Also within that same function, we can use some conditionals to ensure the map has a border on the outside no matter what size.<br/><br/>
+
+        Lets create a function called generateMap.<br/>
+        Inside this function we're gonna start by creating a new array called wm (short for world map) of size mapHeight * mapWidth.<br/><br/>
+
+        We can also initialize all the indexs in this array to zero using .fill(0) at the end of this declaration.
+        </p>
+        <img src={img_26} alt="generate map function" />
+        <p className='learning-text-box'>
+        We're going to create a nested loop just like the one we used in our drawMap function.<br/><br/>
+
+        Thinking about the problem at hand, we want to generate a border along our entire tile map.<br/>
+        Diving deeper we need to assign all the tiles along the edges of our map to 1. We can achieve this by using some basic conditional statements.<br/><br/>
+
+        If y == 0 meaning if we are on the top row.<br/>
+        If y == mapHeight - 1 meaning if we are on the bottom row.<br/>
+        If x == 0 meaning we are at the left most cell in a row.<br/>
+        If x == mapWidth - 1 meaning we are at the last cell in a row.<br/><br/>
+
+        Assign that value to 1 if any condition is met.<br/><br/>
+
+        Lastly, return the new generated array.
+        </p>
+        <img src={img_27} alt="generate map function addition" />
+        <p className='learning-text-box'>
+        Now, instead of assigning our worldMap array to be filled with zeros, 
+        we can call generateMap in our init function. Assigning the result to our worldMap variable.
+        </p>
+        <img src={img_28} alt="generate map function addition" />
+        <p className='learning-text-box'>
+        Refresh and we should see a newly generated map with all border cells being assigned to 1!<br/><br/>
+
+        This works with all map sizes, feel free to mess around and test it out.<br/><br/>
+
+        The reset functionality can be applied using the same function since it's returning an entire new array!<br/><br/>
+
+        In our Start function, assign a click event listener to call generate map when our reset button is pressed. 
+        Remember we gave this am ID of reset in the setup of the HTML.
+        </p>
+        <img src={img_29} alt="reset button set inside init" />
+        <p className='learning-text-box'>
+        Refresh, draw in some tiles and click our reset button. We can now generate a fresh map.<br/><br/>
+
+        With map generation out of the way, the final step is to implement some form of collision detection for the player.
+        We don't want our player to be able to run through walls as we're running around our scene.<br/><br/>
+
+        Since our collision detection boils down to not having our player be able to walk through cells,
+         we can get the projected cell that our player is going to enter by using our projected X and Y values.<br/><br/>
+
+        Then check if that projected cells value != 1, if true we are clear to walk, if it's not true, 
+        we don't update the players position at all which will halt movement.<br/><br/>
+
+        To pull this off, we need to keep track of the current cell our player resides in.
+        This can be achieved using the same approach as our mouse cell, just swapping the values a bit.<br/><br/>
+
+        Go to our player object and create a new property called currentCell, this will be an object containing x and y properties.
+        </p>
+        <img src={img_30} alt="player current cell property" />
+        <p className='learning-text-box'>
+        Up to this point we haven't had any updating data within our player object. 
+        Since we will want to track our cell position constantly, we need a function to update our player properties.<br/><br/>
+
+        Let's call this updatePlayerProps.<br/><br/>
+
+        Inside this function, we get the current cell coordinates by dividing our player position by our cell size, 
+        then casting that result to an integer to remove floating points.
+        </p>
+        <img src={img_31} alt="updatePlayerProps function created" />
+        <p className='learning-text-box'>
+        Place this updatePlayerProps function underneath our callInputController call in Update().
+        </p>
+        <img src={img_32} alt="called updatePlayerProps in Update" />
+        <p className='learning-text-box'>
+        This currentCell property will be useful in future sections, but we can use the same logic to get a projected cell we are walking into.<br/><br/>
+
+        Inside our movement logic we are currently projecting the x and y position we will be in our tile map.<br/><br/>
+
+        We can use these values and check if they are valid before applying them to our player.<br/><br/>
+
+        I'm going to be creating a temporary object in each function called projCell, 
+        this will be the projected cell we are going to be in based on the x and y values calculated prior.<br/><br/>
+
+        The code we are adding here is the exact same for all four movement binds.
+        </p>
+        <img src={img_33} alt="projected cell" />
+        <p className='learning-text-box'>
+        We now need a way to verify that our projectedCell is a valid cell to walk into. 
+        This check is easy but for sematic reasons, I'm going to throw this in its own function.<br/><br/>
+
+        Call it playerCollisionCheck.<br/><br/>
+
+        We can let this function take in the projectedCell as a argument since that's what we will be checking.<br/><br/>
+
+        Then we can check if the projectedCells value is not 1 by using the index syntax from drawMap once more.<br/><br/>
+
+        We then just return a boolean to check if we are good to assign the projected position!
+        </p>
+        <img src={img_34} alt="player collision check function" />
+        <p className='learning-text-box'>
+        To top everything off, we now just wrap our Player.position assignments inside of a conditional,
+        checking the return value of our function.<br/><br/>
+
+        If it returns true, we can assign the new projected position. Else, the player doesn't move!.
+        </p>
+        <img src={img_35} alt="player collision check conditional" />
+        <p className='learning-text-box'>
+        Here’s a final view of our input controller for reference!<br/><br/>
+
+        It was alot but this is the last we will deal with input managament in this instruction.
+        </p>
+        <img src={img_36} alt="inputController overview" />
+        <p className='learning-text-box'>
+        If all went well, you should be able to move the player, rotate the player, draw in and reset cells and also collide with those cells! Sick.<br/><br/>
+
+        We have a lot more to cover but this is why I'm splitting this documentation into sections so you can take it piece by piece.
+        </p>
+        <button className='learning-button' onClick={() => {navigate('/fov')}}>Next Section {'>'}</button>
     </div>
     );
 }

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import {timer} from "https://cdn.skypack.dev/d3-timer@3";
+import Header from '../comps/Header.js';
 import './Demo.css';
 
 function Demo() {
@@ -475,8 +476,17 @@ function Demo() {
 
     return(
         <div className="demo">
+            <div className="landing-content">
+                <h1>Create Your Own Raycaster In Javascript</h1>
+                <p>An educational article on the concepts and implementation of the
+                rendering technique known as "Ray Casting”</p>
+                <div className='demo-buttons'>
+                    <button id='source-btn'>View Source Code</button>
+                    <button onClick={() => {navigate('/learning-intro')}} id='navLanding'>Build This Project</button>
+                </div>
+            </div>
             <div className='demo-text'>
-                <h1 id='demo-header'>Try Out The Finished Product</h1>
+                <h1 id='demo-header'>Controls:</h1>
                 <p id='demo-controls'>Movement: WASD | Rotation: Left & Right Arrows<br/>
                 Left Click/Drag to draw walls</p>
             </div>
@@ -486,7 +496,6 @@ function Demo() {
             </div>
             <div className="demo-buttons">
                 <button id='reset'>Reset Map</button>
-                <button onClick={() => {navigate('/')}} id='navLanding'>Home</button>
             </div>
         </div>
     );
