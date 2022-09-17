@@ -17,8 +17,12 @@ import img_13 from '../images/FOV/Drawing Rays/DR_2.png';
 import img_14 from '../images/FOV/Drawing Rays/DR_3.png';
 import img_15 from '../images/FOV/Drawing Rays/DR_4.png';
 import img_16 from '../images/FOV/Drawing Rays/DR_5.png';
+import { useNavigate } from 'react-router';
 
 function Fov() {
+
+    let navigate = useNavigate();
+
     return(
         <div className='fov'>
             <Header />
@@ -202,7 +206,7 @@ function Fov() {
 
             After we implement collision, we will account for the collision distance and draw the rays at their that distance if possible.
             </p>
-            <button className='learning-button'>Next Section {'>'}</button>
+            <button onClick={() => {navigate('/')}} className='learning-button'>Next Section {'>'}</button>
         </div>
     );
 };
