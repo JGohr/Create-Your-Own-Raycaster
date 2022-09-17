@@ -1,5 +1,6 @@
 import './Setup.css';
 import Header from "../comps/Header.js";
+import { useNavigate } from 'react-router';
 import IMG_HTMLSETUP from '../images/Setup/Setting Up Our HTML/carbon(4).png';
 import img_2 from '../images/Setup/Creating A Game Loop/js.png';
 import img_3 from '../images/Setup/Creating A Game Loop/carbon(5).png';
@@ -15,6 +16,8 @@ import img_12 from '../images/Setup/Rendering The Tile Map/carbon(16).png';
 import img_13 from '../images/Setup/Rendering The Tile Map/carbon(17).png';
 
 function Setup() {
+
+    let navigate = useNavigate();
 
     return(
         <div className='setup'>
@@ -189,7 +192,7 @@ function Setup() {
             Great, we now can fill in cells... well not really just yet. If you recall we need a way to interact with this grid to draw cells in whatever index we want.
 
             This leads us into the next segment of this instruction: <b>Player & Input Controller</b></p>
-            <button className='learning-button'>Next Section</button>
+            <button onClick={() => {navigate('/player_input')}} className='learning-button'>Next Section {'>'}</button>
         </div>
         
     );
