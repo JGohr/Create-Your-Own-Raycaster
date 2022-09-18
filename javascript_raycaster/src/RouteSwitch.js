@@ -5,6 +5,7 @@ import Intro from "./pages/Intro.js";
 import Setup from "./pages/Setup.js";
 import Player from "./pages/Player.js";
 import Fov from "./pages/Fov.js";
+import Ray from "./pages/Ray.js";
 import Final from './pages/Final.js';
 
 const RouteSwitch = () => {
@@ -17,6 +18,7 @@ const RouteSwitch = () => {
         <Route path="/setup" element={<Setup />} />
         <Route path="/player_input" element={<Player />} />
         <Route path="/fov" element={<Fov />} />
+        <Route path="/rays" element={<Ray />} />
         <Route path="/final" element={<Final />} />
       </Routes>
     </BrowserRouter>
