@@ -7,7 +7,7 @@ function Header() {
     return (
         <header>
         <div className='header-title'>
-            <h1>Create Your Own Raycaster</h1>
+            <h1 onClick={() => {navigate('/')}} style={{cursor: 'pointer'}}>Create Your Own Raycaster</h1>
             <h2>Direct questions to <a href='https://twitter.com/devByPura'>@devByPura</a></h2>
         </div>
         <div className='header-links'>
