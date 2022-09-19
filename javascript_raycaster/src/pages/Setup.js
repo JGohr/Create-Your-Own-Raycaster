@@ -30,6 +30,7 @@ function Setup() {
             <Header />
             <div className='learning-nav-box'>
                 <ul className='nav-box-list'>
+                    <li style={{fontSize: '1.2rem', fontWeight: 'bold'}}>Section Breakdown</li>
                     <li><Link to="intro" smooth={true} offset={-125}>Lesson Intro</Link></li>
                     <li><Link to="html" smooth={true} offset={-125}>HTML Setup</Link></li>
                     <li><Link to="game_loop" smooth={true} offset={-125}>Creating The Game Loop</Link></li>

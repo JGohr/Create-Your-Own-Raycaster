@@ -34,6 +34,7 @@ function Fov() {
             <Header />
             <div className='learning-nav-box'>
                 <ul className='nav-box-list'>
+                    <li style={{fontSize: '1.2rem', fontWeight: 'bold'}}>Section Breakdown</li>
                     <li><Link to="intro" smooth={true} offset={-125}>Lesson Intro</Link></li>
                     <li><Link to="fov" smooth={true} offset={-125}>Making The FOV</Link></li>
                     <li><Link to="draw_rays" smooth={true} offset={-125}>Drawing The Rays</Link></li>

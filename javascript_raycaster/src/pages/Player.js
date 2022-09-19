@@ -53,6 +53,7 @@ function Player() {
         <Header />
         <div className='learning-nav-box'>
             <ul className='nav-box-list'>
+                <li style={{fontSize: '1.2rem', fontWeight: 'bold'}}>Section Breakdown</li>
                 <li><Link to="intro" smooth={true} offset={-125}>Lesson Intro</Link></li>
                 <li><Link to="player" smooth={true} offset={-125}>Creating Our Player</Link></li>
                 <li><Link to="input_controller" smooth={true} offset={-125}>Creating The Input Controller</Link></li>

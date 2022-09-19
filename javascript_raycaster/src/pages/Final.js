@@ -31,6 +31,7 @@ function Final() {
             <Header />
             <div className='learning-nav-box'>
                 <ul className='nav-box-list'>
+                    <li style={{fontSize: '1.2rem', fontWeight: 'bold'}}>Section Breakdown</li>
                     <li><Link to="intro" smooth={true} offset={-125}>Lesson Intro</Link></li>
                     <li><Link to="draw_col" smooth={true} offset={-125}>Drawing Collision</Link></li>
                     <li><Link to="render_scene" smooth={true} offset={-125}>Rendering The Scene</Link></li>

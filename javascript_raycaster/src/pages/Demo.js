@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import {timer} from "https://cdn.skypack.dev/d3-timer@3";
-import Header from '../comps/Header.js';
 import './Demo.css';
 
 function Demo() {
@@ -14,6 +13,16 @@ function Demo() {
         const renderCtx = renderCanvas.getContext('2d');
 
         let worldMap;
+
+        let cellFilledColor = '#00a96f';
+        let cellNullColor = '#032b1d';
+        let rayColor = '';
+        let colColor = '#FE2836';
+        let playerColor = '#FE2836';
+        let horWallColor = '';
+        let verWallColor = '';
+        let skyColor = '#001b12';
+        let floorColor = '#00dddd';
 
         const cellSize = 40;
         const mapHeight = 12;
@@ -284,7 +293,7 @@ function Demo() {
         {
             for(let r in Player.rays)
             {
-                renderCtx.fillStyle = '#042122';
+                renderCtx.fillStyle = skyColor;
                 renderCtx.fillRect(r, 0, 1, viewHeight / 2);
                 renderCtx.fillStyle = '#cac2b4';
                 renderCtx.fillRect(r, viewHeight / 2, 1, viewHeight);
@@ -300,9 +309,9 @@ function Demo() {
                 if(Ray.hit)
                 {
                     if(Ray.sideHit == 0)
-                        renderCtx.fillStyle = '#ff3c3c';
+                        renderCtx.fillStyle = skyColor;
                     else if(Ray.sideHit == 1)
-                        renderCtx.fillStyle = '#00dddd';
+                        renderCtx.fillStyle = floorColor;
 
                     renderCtx.fillRect(r, viewHeight / 2 - lineHeight / 2, 1, lineHeight);
                 }
@@ -318,10 +327,10 @@ function Demo() {
                 for (let x = 0; x < mapWidth; x++) {
                     switch (worldMap[y * mapWidth + x]) {
                         case 0:
-                            ctx.fillStyle = '#220504';
+                            ctx.fillStyle = cellNullColor;
                             break;
                         case 1:
-                            ctx.fillStyle = '#d040e0';
+                            ctx.fillStyle = cellFilledColor;
                             break;
                     }
 
@@ -332,7 +341,7 @@ function Demo() {
         }
 
         function drawPlayer() {
-            ctx.fillStyle = '#9734FF';
+            ctx.fillStyle = playerColor;
             ctx.beginPath();
             ctx.arc(Player.position.x, Player.position.y, cellSize / 6, 0, 2 * Math.PI);
             ctx.fill();
@@ -376,7 +385,7 @@ function Demo() {
                     let colX = Player.position.x + (Ray.direction.x * Ray.hitDist);
                     let colY = Player.position.y + (Ray.direction.y * Ray.hitDist);
                 
-                    ctx.fillStyle = '#FE2836';
+                    ctx.fillStyle = colColor;
                     ctx.beginPath();
                     ctx.arc(colX, colY, 1, 0, 2 * Math.PI);
                     ctx.fill();
@@ -483,7 +492,7 @@ function Demo() {
             <div className="landing-content">
                 <h1>Create Your Own Raycaster In Javascript</h1>
                 <p>An educational article on the concepts and implementation of the
-                rendering technique known as "Ray Casting”.
+                rendering technique known as "Ray Casting”.<br/>
                 Going into concepts such as scalar projection, re-working pythagorean theorem, DDA line drawing algorithm and more to bring a 
                 resource for aspiring javascript developers to test their knowledge while creating a intriguing project.</p>
                 <div className='demo-buttons'>
