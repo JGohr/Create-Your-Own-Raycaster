@@ -26,8 +26,12 @@ import img_21 from '../images/RayProps/Section 4/CRD_21.png';
 import img_22 from '../images/RayProps/Section 4/CRD_22.png';
 import img_23 from '../images/RayProps/Section 4/CRD_23.png';
 import uss from '../images/RayProps/Section 4/USS_demo.PNG';
+import { useNavigate } from 'react-router';
 
 function Ray() {
+
+    let navigate = useNavigate();
+
     return(
         <div className='ray'>
             <Header />
@@ -230,6 +234,185 @@ function Ray() {
             We can store these increments in a object for each ray called stepDirection.<br/><br/>
             </p>
             <img src={img_6} alt="" />
+            <p className='learning-text-box'>
+            Since our initial stepDirection and travelDist objects values are
+            set to 0, we need to prime these values to prepare them for the actual collision check.<br/><br/>
+
+            This itself is how we resolve starting within a cell. Since we already have the distance our ray per axis can travel (unitStepSize), 
+            we need to get the distance from our starting position in the cell, to each axis boundary.<br/><br/>
+
+            If we visualize our player within a single cell, our position within that cell can be 
+            mapped as a floating point representing the percentage along each axis we lie within that single cell.<br/><br/>
+
+            To go deeper, you can even think of the single cell as it's own mini grid, with each boundary being 0 or 1.
+            Everything between these boundaries, is a floating point between 0 and 1, represented as a 
+            decimal conversion of the percentage we stay within the cell.<br/><br/>
+
+            Since we are going to be incrementing by a set amount (unitStepSize), we need to start our checks aligned with the nearest boundaries. 
+            We can use this percentage and multiply it by our unitStepSize values to get the distance to the nearest boundary.<br/><br/>
+
+            This realistically is no different than our actual collision check since technically a cell with a value of 1 
+            could be directly next to our players position in space.<br/><br/>
+
+            With that being said, let's create a way to track the position we lie within a cell!<br/><br/>
+
+            Create another object with x and y values called cellPosition within our player object.
+            </p>
+            <img src={img_7} alt="" />
+            <p className='learning-text-box'>
+            We can find this percentage by getting our position in space and subtracting the starting position of the cell we lie in. 
+            Dividing it all by our cellSize.<br/><br/>
+
+            Let's throw this in our updatePlayerProps.
+            </p>
+            <img src={img_8} alt="" />
+            <p className='learning-text-box'>
+            Okay enough setup, let's get into actually priming these values.<br/><br/>
+
+            What we do for the x values here we will do the exact same for y, this is partially why I setup my objects the way I did!<br/><br/>
+
+            We want to make sure the direction we check (stepDirection) is the same as the direction our rays are pointing in.
+            For example, if our ray is pointing down and to the right, we need to make sure our stepDirection x and y values are ready to go in those directions.<br/><br/>
+
+            Start by adding our four conditionals, two for checking the x and y values in the negative direction and the remaining two for the positive.<br/><br/>
+            </p>
+            <img src={img_9} alt="" />
+            <p className='learning-text-box'>
+            Inside these statements we're going to prime both the stepDirection and travelDist objects.<br/><br/>
+
+            Starting with the stepDirection, we can say if our rays direction is less than zero (going left for x or up for y):
+            Assign the stepDirection to be -1<br/><br/>
+
+            In the other case (going right for x and down for y), assign the stepDirection to be = 1
+            </p>
+            <img src={img_10} alt="" />
+            <p className='learning-text-box'>
+            Easy enough. Onto priming the Ray.travelDist values.<br/><br/>
+
+            We have our Player.cellPosition object containing some floats for how much we lay in a given cell.
+            We can use this float and multiply it by our unitStepSize to get the distance to the nearest cell boundary.<br/><br/>
+
+            There's one catch though, depending on the direction our player is facing, we might want to alter that value slightly.<br/><br/>
+
+            For example, if we are positioned on the bottom right corner of a cell and our rays direction are going up and left, we need
+            the distance for the collision in that direction. Luckily this is really simple while using our Player.cellPosition object.<br/><br/>
+
+            If our rays direction value is negative, we just get the percentage we lie within a cell multiplied by our unitStepSize.<br/><br/>
+
+            If our rays direction value is positive, we want to get that distance but instead of using the percentage we lie within the cell
+            we get the remaining percentage by subtracting 1.0 by our floats. Then multiplying by our unitStepSize.
+            </p>
+            <img src={img_11} alt="" />
+            <p className='learning-text-box'>
+            Awesome! With all our values primed, we can dive into implementing our actual collision check functionality.<br/><br/>
+
+            Start by defining a checkForCollision function, that takes in an object 'Ray' as an argument.
+            </p>
+            <img src={img_12} alt="" />
+            <p className='learning-text-box'>
+            We're going to need three more properties attached to our ray object:<br/><br/>
+
+            - hit: A boolean to track if the ray is colliding<br/>
+            - hitDist: a number representing the distance it took to travel and collide with a wall<br/>
+            - sideHit: A value being 0 or 1 to represent if the collision was hit along the x or y axis (0 = x, 1 = y)<br/><br/>
+
+            Let's assign these to our Ray object now
+            </p>
+            <img src={img_13} alt="" />
+            <p className='learning-text-box'>
+            In psuedo code this is what our collision function might look like:<br/><br/>
+
+            Reset the rays hit boolean<br/><br/>
+
+            While ray.hit = false and Ray.hitDist greater than maxDist<br/>
+                For the shorter travelDist value<br/><br/>
+
+                Assign the rays hitDist = that travelDist value<br/><br/>
+
+                Increment the travelDist value for that axis<br/><br/>
+
+                Move the cell to check in the stepDirection for that axis<br/><br/>
+
+                Assign the sideHit value for that axis<br/><br/>
+
+                Check if the cellToCheck value is 1 (Collision)<br/><br/>
+
+                    True? Ray.hit = true (breaks the loop)<br/>
+                    False? Keep looping<br/><br/>
+
+
+            Hopefully you can use that as guidance along this implementation but let's take it in chunks and explain along the way.<br/><br/>
+
+            We start by setting our Ray.hit = false
+            </p>
+            <img src={img_14} alt="" />
+            <p className='learning-text-box'>
+            Next, we want to check for collision until we collide with something AND also while our hitDist is less than our maxDist. 
+            Remember we made this maxDist value in the previous sections.<br/><br/>
+
+            A while loop with these conditionals will work perfectly.
+            </p>
+            <img src={img_15} alt="" />
+            <p className='learning-text-box'>
+            Like we've talked about in the explanation, 
+            this is all revolving around comparing our two travelDist values, 
+            taking the shorter one and applying some logic. We can set those up like so:<br/><br/>
+            </p>
+            <img src={img_16} alt="" />
+            <p className='learning-text-box'>
+            Whichever travelDist (x or y) is the shorter length, we know is the distance to the closest cell.<br/><br/>
+
+            We want to assign our rays hitDist variable to that length.<br/><br/>
+
+            We can use this value to check the possible collision distance OR if we've reached the max distance
+            </p>
+            <img src={img_17} alt="" />
+            <p className='learning-text-box'>
+            On our first iteration of the collision check, that hitDist will actually just be the primed distance we setup before. 
+            Now, since our distances are both aligned along cell walls, we can keep incrementing our travelDist value by our unitStepSize.<br/><br/>
+
+            This is how we skip to the next cell wall!
+            </p>
+            <img src={img_18} alt="" />
+            <p className='learning-text-box'>
+            Whatever distance was shorter is the direction we want to check the next cell in, 
+            we can increment our rays cellToCheck objects values by our rays stepDirection values.<br/><br/>
+            </p>
+            <img src={img_19} alt="" />
+            <p className='learning-text-box'>
+            In the next section we are going to be rendering our scene. 
+            Part of that rendering proccess is going to render different shades depending on the side of the cell we hit.<br/><br/>
+
+            The last part of our while loop will be assigning the side we hit
+            </p>
+            <img src={img_20} alt="" />
+            <p className='learning-text-box'>
+            We then want check the index of our world map using the cellToCheck variable. If it contains a value of 1, we assign Ray.hit = true.<br/><br/>
+            </p>
+            <img src={img_21} alt="" />
+            <p className='learning-text-box'>
+            That's all we needed for our checkForCollision function! 
+            Now let's go back into updateRayProps and cell checkForCollision on each ray.<br/><br/>
+            </p>
+            <img src={img_22} alt="" />
+            <p className='learning-text-box'>
+            This last snippet will be useful for our next section (rendering), 
+            but underneath the checkForCollision call, we're going to add a check if the current ray is hit, if not we want to reset the hitDist for that ray.<br/><br/>
+
+            Also, our ray may register as hit but exceed the maxDist variable, 
+            so we want to check for that and reset the hit and hitDist variables to avoid our rays stretching passed the desired maximum distance.<br/><br/>
+            </p>
+            <img src={img_23} alt="" />
+            <p className='learning-text-box'>
+            And that's wrap for this section! Now I know you are thinking 
+            "I just went through all the headache of this section just to not see an end result?"<br/><br/>
+
+            The answer to that is yes! This section is really the main part of this entire application 
+            so I needed to separate it to clear confusion from any other material.<br/><br/>
+
+            Don't worry though, the rendering section is the last page to read and you'll finally have your own ray caster, how exciting!<br/><br/>
+            </p>
+            <button className='learning-button' onClick={() => {navigate('/final')}}>Next Section {'>'}</button>
         </div>
     );
 };

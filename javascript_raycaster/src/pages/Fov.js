@@ -206,7 +206,7 @@ function Fov() {
 
             After we implement collision, we will account for the collision distance and draw the rays at their that distance if possible.
             </p>
-            <button onClick={() => {navigate('/')}} className='learning-button'>Next Section {'>'}</button>
+            <button onClick={() => {navigate('/rays')}} className='learning-button'>Next Section {'>'}</button>
         </div>
     );
 };
