@@ -215,7 +215,7 @@ function Final() {
             Save and head back over to the browser to see the final result!
             You should be able to move around, draw cells and see them render in real time.<br/><br/>
             </p>
-            <div name="conclusion" className='learning-text-box'>
+            <div id="conclusion" name="conclusion" className='learning-text-box'>
                 <h1 className='learning-text-title'>Conclusion</h1>
                 <p>If you’ve made it to the end of this article I’d like to start by saying<br/><br/>
 

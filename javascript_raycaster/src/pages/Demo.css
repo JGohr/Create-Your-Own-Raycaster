@@ -30,6 +30,7 @@
     width: 150px;
     height: 35px;
     font-weight: 700;
+    cursor: pointer;
 }
 
 .demo-text

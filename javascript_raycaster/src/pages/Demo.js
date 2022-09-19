@@ -485,7 +485,7 @@ function Demo() {
                 <p>An educational article on the concepts and implementation of the
                 rendering technique known as "Ray Casting”</p>
                 <div className='demo-buttons'>
-                    <button id='source-btn'>View Source Code</button>
+                    <button onClick={() => {window.open('https://github.com/JGohr/TileMap-Raycaster')}} id='source-btn'>View Source Code</button>
                     <button onClick={() => {navigate('/learning-intro')}} id='navLanding'>Build This Project</button>
                 </div>
             </div>
