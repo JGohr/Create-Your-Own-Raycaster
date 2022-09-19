@@ -19,6 +19,7 @@ import img_15 from '../images/FOV/Drawing Rays/DR_4.png';
 import img_16 from '../images/FOV/Drawing Rays/DR_5.png';
 import { useNavigate } from 'react-router';
 import { useEffect } from 'react';
+import { Link } from 'react-scroll';
 
 function Fov() {
 
@@ -31,11 +32,18 @@ function Fov() {
     return(
         <div className='fov'>
             <Header />
-            <div className='learning-text-box'>
+            <div className='learning-nav-box'>
+                <ul className='nav-box-list'>
+                    <li><Link to="intro" smooth={true} offset={-125}>Lesson Intro</Link></li>
+                    <li><Link to="fov" smooth={true} offset={-125}>Making The FOV</Link></li>
+                    <li><Link to="draw_rays" smooth={true} offset={-125}>Drawing The Rays</Link></li>
+                </ul>
+            </div>
+            <div name="intro" className='learning-text-box'>
                 <h1 className='learning-text-title'>Section Introduction</h1>
                 <p>By the end of this section we will have a way to draw rays within a given field of view.</p>
             </div>
-            <div className='learning-text-box'>
+            <div name="fov" className='learning-text-box'>
                 <h1 className='learning-text-title'>Creating A FOV</h1>
                 <p>We're going to start by creating the ray factory function, fov variable & drawRay function.<br/><br/>
 
@@ -155,7 +163,7 @@ function Fov() {
 
             This leads us into the next problem at hand.
             </p>
-            <div className='learning-text-box'>
+            <div name="draw_rays" className='learning-text-box'>
                 <h1 className='learning-text-title'>Drawing Rays</h1>
                 <p>Let's create a drawRay function to visualize that our rays direction are being calculated properly!<br/><br/>
 

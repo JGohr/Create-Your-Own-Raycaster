@@ -2,6 +2,7 @@ import './Setup.css';
 import Header from "../comps/Header.js";
 import { useNavigate } from 'react-router';
 import { useEffect } from 'react';
+import { Link } from 'react-scroll';
 import IMG_HTMLSETUP from '../images/Setup/Setting Up Our HTML/carbon(4).png';
 import img_2 from '../images/Setup/Creating A Game Loop/js.png';
 import img_3 from '../images/Setup/Creating A Game Loop/carbon(5).png';
@@ -27,12 +28,20 @@ function Setup() {
     return(
         <div className='setup'>
             <Header />
-            <div className='learning-text-box'>
+            <div className='learning-nav-box'>
+                <ul className='nav-box-list'>
+                    <li><Link to="intro" smooth={true} offset={-125}>Lesson Intro</Link></li>
+                    <li><Link to="html" smooth={true} offset={-125}>HTML Setup</Link></li>
+                    <li><Link to="game_loop" smooth={true} offset={-125}>Creating The Game Loop</Link></li>
+                    <li><Link to="tile_map" smooth={true} offset={-125}>Rendering The Tile Map</Link></li>
+                </ul>
+            </div>
+            <div name="intro" className='learning-text-box'>
                 <h1 className='learning-text-title'>Lesson Introduction</h1>
                 <p className='learning-text-body'>By the end of this section you will have a simple HTML document setup,
                 a proper game loop structure & functionality to create and render a tilemap into the scene.</p>
             </div>
-            <div className='learning-text-box'>
+            <div name="html" className='learning-text-box'>
                 <h1 className='learning-text-title'>Setting Up Our HTML</h1>
                 <p className='learning-text-body'>There wont be much HTML in this course so I’m just going to give you the few
                 elements we need now. All we have is a emmet generated HTML skeleton with:</p>
@@ -44,7 +53,7 @@ function Setup() {
                 </ul>
             </div>
             <img src={IMG_HTMLSETUP} alt="HTML SETUP IMAGE" />
-            <div className='learning-text-box'>
+            <div name="game_loop" className='learning-text-box'>
                 <h1 className='learning-text-title'>Creating A Game Loop</h1>
                 <p className='learning-text-body'>Since we will be constantly needing to update data and render graphics based on that data, we're gonna need some kind of structure to control the flow.
                 Let's set up a basic game loop to handle everything accordingly.<br/><br/>
@@ -95,7 +104,7 @@ function Setup() {
 
             <img src={img_5} alt="game loop creation" />
 
-            <div className='learning-text-box'>
+            <div name="tile_map" className='learning-text-box'>
                 <h1 className='learning-text-title'>Rendering The Tile Map</h1>
                 <p>Having a game loop is useful but only if we have stuff to process in this loop!<br/><br/>
 

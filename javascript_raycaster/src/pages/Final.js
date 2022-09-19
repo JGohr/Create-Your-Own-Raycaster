@@ -2,6 +2,7 @@ import './Final.css';
 import Header from '../comps/Header';
 
 import { useEffect } from 'react';
+import { Link } from 'react-scroll';
 
 import img_1 from '../images/Final/Drawing Collision/DC_1.png';
 import img_2 from '../images/Final/Drawing Collision/DC_2.png';
@@ -28,13 +29,21 @@ function Final() {
     return (
         <div className='final'>
             <Header />
-            <div className='learning-text-box'>
+            <div className='learning-nav-box'>
+                <ul className='nav-box-list'>
+                    <li><Link to="intro" smooth={true} offset={-125}>Lesson Intro</Link></li>
+                    <li><Link to="draw_col" smooth={true} offset={-125}>Drawing Collision</Link></li>
+                    <li><Link to="render_scene" smooth={true} offset={-125}>Rendering The Scene</Link></li>
+                    <li><Link to="conclusion" smooth={true} offset={-125}>Conclusion</Link></li>
+                </ul>
+            </div>
+            <div name="intro" className='learning-text-box'>
                 <h1 className='learning-text-title'>Section Introduction</h1>
                 <p>By the end of this section we will be able to see the points of collision along our rays & 
                 render our final product to the screen!
                 </p>
             </div>
-            <div className='learning-text-box'>
+            <div name="draw_col" className='learning-text-box'>
                 <h1 className='learning-text-title'>Drawing Collision</h1>
                 <p>Let's create a drawCollision function and call it in our render method</p>
             </div>
@@ -67,7 +76,7 @@ function Final() {
             </p>
             <img src={img_4} alt ="" />
             <p className='learning-text-box'>That's really all there is to drawing the collision in our 2D space. Onto rendering our walls!</p>
-            <div className='learning-text-box'>
+            <div name="render_scene" className='learning-text-box'>
                 <h1 className='learning-text-title'>Rendering The Scene</h1>
                 <p>Moving onto the rendering of our walls.<br/><br/>
 
@@ -206,7 +215,7 @@ function Final() {
             Save and head back over to the browser to see the final result!
             You should be able to move around, draw cells and see them render in real time.<br/><br/>
             </p>
-            <div className='learning-text-box'>
+            <div name="conclusion" className='learning-text-box'>
                 <h1 className='learning-text-title'>Conclusion</h1>
                 <p>If you’ve made it to the end of this article I’d like to start by saying<br/><br/>
 

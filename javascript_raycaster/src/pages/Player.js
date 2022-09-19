@@ -37,6 +37,7 @@ import img_36 from '../images/P_IC/Creating The Input Controller/IC_31.png';
 import matrix from '../images/P_IC/Creating The Input Controller/matrix.svg';
 
 import Header from '../comps/Header.js';
+import { Link } from 'react-scroll';
 import { useNavigate } from 'react-router';
 import { useEffect } from 'react';
 
@@ -50,7 +51,14 @@ function Player() {
 
     return (<div className="player">
         <Header />
-        <div className='learning-text-box'>
+        <div className='learning-nav-box'>
+            <ul className='nav-box-list'>
+                <li><Link to="intro" smooth={true} offset={-125}>Lesson Intro</Link></li>
+                <li><Link to="player" smooth={true} offset={-125}>Creating Our Player</Link></li>
+                <li><Link to="input_controller" smooth={true} offset={-125}>Creating The Input Controller</Link></li>
+            </ul>
+        </div>
+        <div name="intro" className='learning-text-box'>
             <h1 className='learning-text-title'>Lesson Introduction</h1>
             <p>By the end of this section you will have a player object setup as well as
             a input controller to handle funcitonality like player movement, rotation & cell drawing within
@@ -59,7 +67,7 @@ function Player() {
             We will touch on the topics of vectors and the rotation matrix.
             </p>
         </div>
-        <div className='learning-text-box'>
+        <div name="player" className='learning-text-box'>
             <h1 className='learning-text-title'>Creating Our Player</h1>
             <p>In comes our PLAYER. Unfortunately we're are not making any sprites for this project, but nonetheless our little dot of a player will do wonders for now.<br/><br/>
 
@@ -140,7 +148,7 @@ function Player() {
         <p className='learning-text-box'>We should probably add some way for us to interact with this player object.
         Time to make a <b>input controller</b>.</p>
 
-        <div className='learning-text-box'>
+        <div name="input_controller" className='learning-text-box'>
             <h1 className='learning-text-title'>Creating The Input Controller</h1>
             <p>Using eventListeners we can detect when a input happens from the user such as key presses, mouse clicks, etc...<br/><br/>
 

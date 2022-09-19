@@ -28,6 +28,7 @@ import img_23 from '../images/RayProps/Section 4/CRD_23.png';
 import uss from '../images/RayProps/Section 4/USS_demo.PNG';
 import { useNavigate } from 'react-router';
 import { useEffect } from 'react';
+import { Link } from 'react-scroll';
 
 function Ray() {
 
@@ -40,7 +41,14 @@ function Ray() {
     return(
         <div className='ray'>
             <Header />
-            <div className='learning-text-box'>
+            <div className='learning-nav-box'>
+                <ul className='nav-box-list'>
+                    <li><Link to="intro" smooth={true} offset={-125}>Lesson Intro</Link></li>
+                    <li><Link to="theory" smooth={true} offset={-125}>Theory</Link></li>
+                    <li><Link to="ray_data" smooth={true} offset={-125}>Calculating Ray Data</Link></li>
+                </ul>
+            </div>
+            <div name="intro" className='learning-text-box'>
                 <h1 className='learning-text-title'>Section Introduction</h1>
                 <p>If you've made it this far, congrats! If any of this instruction feels foreign or confusing, that's okay. 
                 By the end, everything will come full circle.<br/><br/>
@@ -56,55 +64,41 @@ function Ray() {
                 I wanted to preface this section with that small comment, as well as some resources to help aid 
                 in any confusion when talking about the DDA algorithm, vectors, Pythagorean theorem, etc...</p>
             </div>
-            <p className='learning-text-box'>
-            Before jumping into any code, we need to make sure we understand exactly what our collision check is doing under the hood.<br/><br/>
-
-            This implementation is only around 50 lines of code. The performance is remarkable but the underlying logic can take some time to grasp.<br/><br/>
-
-            The beauty of ray casting lies behind how and when we are checking for collision.
-            Technically, we could cast a ray in a direction and constantly call a function to check a minute distance and see if it's colliding.<br/><br/>
-
-            This method is computationally harsh and really is leaving a lot on the table for performance/accuracy. 
-            Using a set constant to increment the check could result in a collision, but this collision may not be as accurate as we want.<br/><br/>
-
-            Imagine the increment just barely misses the cell wall and collides within the cell. 
-            When we get to rendering the line heights, this can cause some odd looking graphics.<br/><br/>
-
-            We want to approach this increment to check in a more intelligent way. Let's look at a overview of how we can do this.<br/><br/>
-
-            Knowing our map is just an array of 0s and 1s, rendered as a grid of cells all equal in size. 
-            We have no need to check for collision by some small incremental value. Instead, 
-            if we consider that a index in our array with a value of 1 is our 'wall', 
-            we only need to increment up to the edge of any given cell = 1. This 'edge' is simply just the x or y axis that a single cell lies within.<br/><br/>
-
-            We can achieve this by using a twist on the Pythagorean theorem. Let's jump into it.<br/><br/>
-
-            Funny enough, I used to dread learning about this theorem in high school. I constantly told myself, 
-            "When will I ever need this!?".<br/><br/>
-
-            Welp... here I am. I don't want this to turn into a math lesson, so I'm going to try and break this down without getting to deep into the weeds.<br/><br/>
-
-            <b>Pythagorean theorem: a^2 + b^2 = c^2</b><br/>
-            Given two sides of a right angled triangle (a & b), we can find the hypotenuse (c).<br/><br/>
-
-            The 'hypotenuse' we are solving for in this application, is the distance from one edge of a cell to another. 
-            Being more precise, we need to find the distance our ray travels between our axis lines, in any given direction (our slope).<br/><br/>
-
-            Let me present you with the final formula and then ill go into how this makes sense.<br/><br/>
-
-            distanceAlongX = sqrt( 1 + Math.pow(Ray.direction.y, 2) / Math.pow(Ray.direction.x, 2) ) * cellSize<br/><br/>
-            distanceAlongY = sqrt( 1 + Math.pow(Ray.direction.x, 2) / Math.pow(Ray.direction.y, 2) ) * cellSize<br/><br/>
-
-            With no context, this can be daunting but it's simpler than it looks.<br/><br/>
-
-            The square root is staying since this is just substituting values in for the previous a, b & c variables.<br/><br/>
-
-            Starting with the value 1: We are looking for the distance our ray travels for a singular movement along a row or column of cells. 
-            This can be better grasped with a visualization.<br/><br/>
-
-            Imagine there is a 1x3 set of cells, with a ray starting from the top left corner down to the bottom right. 
-            Drawing dots on each intersection of a grid line, blue for X and red for Y.
-            </p>
+            <div name="theory" className='learning-text-box'>
+                <h1 className='learning-text-title'>Theory</h1>
+                <p>
+                Before jumping into any code, we need to make sure we understand exactly what our collision check is doing under the hood.<br/><br/>
+                This implementation is only around 50 lines of code. The performance is remarkable but the underlying logic can take some time to grasp.<br/><br/>
+                The beauty of ray casting lies behind how and when we are checking for collision.
+                Technically, we could cast a ray in a direction and constantly call a function to check a minute distance and see if it's colliding.<br/><br/>
+                This method is computationally harsh and really is leaving a lot on the table for performance/accuracy.
+                Using a set constant to increment the check could result in a collision, but this collision may not be as accurate as we want.<br/><br/>
+                Imagine the increment just barely misses the cell wall and collides within the cell.
+                When we get to rendering the line heights, this can cause some odd looking graphics.<br/><br/>
+                We want to approach this increment to check in a more intelligent way. Let's look at a overview of how we can do this.<br/><br/>
+                Knowing our map is just an array of 0s and 1s, rendered as a grid of cells all equal in size.
+                We have no need to check for collision by some small incremental value. Instead,
+                if we consider that a index in our array with a value of 1 is our 'wall',
+                we only need to increment up to the edge of any given cell = 1. This 'edge' is simply just the x or y axis that a single cell lies within.<br/><br/>
+                We can achieve this by using a twist on the Pythagorean theorem. Let's jump into it.<br/><br/>
+                Funny enough, I used to dread learning about this theorem in high school. I constantly told myself,
+                "When will I ever need this!?".<br/><br/>
+                Welp... here I am. I don't want this to turn into a math lesson, so I'm going to try and break this down without getting to deep into the weeds.<br/><br/>
+                <b>Pythagorean theorem: a^2 + b^2 = c^2</b><br/>
+                Given two sides of a right angled triangle (a & b), we can find the hypotenuse (c).<br/><br/>
+                The 'hypotenuse' we are solving for in this application, is the distance from one edge of a cell to another.
+                Being more precise, we need to find the distance our ray travels between our axis lines, in any given direction (our slope).<br/><br/>
+                Let me present you with the final formula and then ill go into how this makes sense.<br/><br/>
+                distanceAlongX = sqrt( 1 + Math.pow(Ray.direction.y, 2) / Math.pow(Ray.direction.x, 2) ) * cellSize<br/><br/>
+                distanceAlongY = sqrt( 1 + Math.pow(Ray.direction.x, 2) / Math.pow(Ray.direction.y, 2) ) * cellSize<br/><br/>
+                With no context, this can be daunting but it's simpler than it looks.<br/><br/>
+                The square root is staying since this is just substituting values in for the previous a, b & c variables.<br/><br/>
+                Starting with the value 1: We are looking for the distance our ray travels for a singular movement along a row or column of cells.
+                This can be better grasped with a visualization.<br/><br/>
+                Imagine there is a 1x3 set of cells, with a ray starting from the top left corner down to the bottom right.
+                Drawing dots on each intersection of a grid line, blue for X and red for Y.
+                </p>
+            </div>
             <img src={uss} alt="" />
             <p className='learning-text-box'>
             From our starting point, to each nearest dot per color, we can see that the distance our ray travels along each axis is exactly the same. 
@@ -179,7 +173,7 @@ function Ray() {
 
             Let's put this into code and hopefully it will start piecing together!
             </p>
-            <div className='learning-text-box'>
+            <div name="ray_data" className='learning-text-box'>
                 <h1 className='learning-text-title'>Calculating Ray Data</h1>
                 <p>We start by defining the distanceAlongX & distanceAlongY variables.<br/><br/>
 
