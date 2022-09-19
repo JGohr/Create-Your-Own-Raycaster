@@ -483,23 +483,27 @@ function Demo() {
             <div className="landing-content">
                 <h1>Create Your Own Raycaster In Javascript</h1>
                 <p>An educational article on the concepts and implementation of the
-                rendering technique known as "Ray Casting”</p>
+                rendering technique known as "Ray Casting”.
+                Going into concepts such as scalar projection, re-working pythagorean theorem, DDA line drawing algorithm and more to bring a 
+                resource for aspiring javascript developers to test their knowledge while creating a intriguing project.</p>
                 <div className='demo-buttons'>
                     <button onClick={() => {window.open('https://github.com/JGohr/TileMap-Raycaster')}} id='source-btn'>View Source Code</button>
                     <button onClick={() => {navigate('/learning-intro')}} id='navLanding'>Build This Project</button>
                 </div>
             </div>
-            <div className='demo-text'>
-                <h1 id='demo-header'>Controls:</h1>
-                <p id='demo-controls'>Movement: WASD | Rotation: Left & Right Arrows<br/>
-                Left Click/Drag to draw walls</p>
-            </div>
             <div className="demo-screens">
+                <div className='demo-controls'>
+                    <div className='demo-text'>
+                        <h1 id='demo-header'>Controls:</h1>
+                        <p id='controls'>Movement: WASD | Rotation: Left & Right Arrows<br/>
+                        Left Click/Drag to draw walls</p>
+                    </div>
+                    <div className="demo-buttons">
+                        <button id='reset'>Reset Map</button>
+                    </div>
+                </div>
                 <canvas id='grid'></canvas>
                 <canvas id='render'></canvas>
-            </div>
-            <div className="demo-buttons">
-                <button id='reset'>Reset Map</button>
             </div>
         </div>
     );

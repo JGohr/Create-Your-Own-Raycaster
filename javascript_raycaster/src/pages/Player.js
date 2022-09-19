@@ -83,23 +83,20 @@ function Player() {
             Before we get into anything around input management though, let's create a player in our code and render it on the canvas.
             I'm going to represent our Player as an object literal, you could put this into a class of some sort but... this is 2022 come on now<br/><br/>
 
-            Inside our player object, let's assign two properties: position & direction<br/><br/>
+            Inside our player object, let's assign two properties: <b>position & direction</b><br/><br/>
 
             These properties values will be represented as objects containing x and y values.
-            One being the coordinate position in our canvas, the other being a UNIT VECTOR. Let’s default our players initial direction to 0, -1<br/><br/>
-
-            We will touch on the topics of vectors and the rotation matrix.</p>
+            One being the coordinate position in our canvas, the other being a unit vector. Let’s default our players initial direction to 0, -1<br/><br/></p>
         </div>
         <img src={img_1} alt='player object creation' />
         <p className='learning-text-box'>Unit vectors are just fancy science man lingo for a vector having x and y 
-        values shrunk down to a range of -1 to 1;<br/><br/>
+        values shrunk down to a range of -1 to 1.<br/><br/>
 
-        For example, x = 1, y = 0 just means the direction is pointing in the positive ‘direction’ along the x axis.<br/><br/>
+        For example, x = 1, y = 0 just means the direction is pointing in the positive direction along the x axis.<br/><br/>
 
-        y = 1, x = 0 in our case would actually be pointing down since our 2D space origin is actually the top left corner of the screen!<br/><br/>
+        y = 1, x = 0 in our case would actually be pointing down since our 2D space origin is actually the top left corner of the screen!<br/>
 
-        I don't want to dive too deep into vectors too much since we already have more math down the road, I'd recommend looking for some resources of vectors if needed.<br/><br/>
-        The <b>Coding Train</b>, <b>Javidx9</b>, <b>Organic Chemistry Tutor</b> & <b>3Blue1Brown</b> are all great resources.
+        <b>The Coding Train</b>, <b>Javidx9</b>, <b>Organic Chemistry Tutor</b> & <b>3Blue1Brown</b> are all great resources to research vectors.<br/><br/>
         
         So we have a coordinate position and direction vector attached to our player. Let's try and get this object on the canvas!<br/><br/>
 
@@ -107,7 +104,7 @@ function Player() {
 
         We're going to be using context.arc() which is just a method that will allow us to draw a circle.<br/><br/>
 
-        Before actually making this method call, remember how we set the context.fillStyle previously in the drawMap call()?<br/><br/>
+        Before actually making this method call, remember how we set the context.fillStyle previously in the drawMap call?<br/><br/>
 
         This attribute will still be the same until we re-assign it something else, we want some contrast between
         our player and the scene, so let's assign it something that will stand out... I'm going with red.</p>
@@ -127,7 +124,7 @@ function Player() {
 
         The last two angles are going to take radian values which are just another representation of degrees.<br/><br/>
 
-        StartAngle can be 0 and since we want a full circle we need a radian value to represent 360 degrees.
+        startAngle can be 0 and since we want a full circle we need a radian value to represent 360 degrees.
         This actually is easy to get, we just multiply 2 * Math.PI. More info on radians later.<br/><br/>
 
         After all our args are filled out, we just need to call context.fill() to draw the previously created arc.</p>

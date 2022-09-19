@@ -55,18 +55,19 @@ function Setup() {
             <img src={IMG_HTMLSETUP} alt="HTML SETUP IMAGE" />
             <div name="game_loop" className='learning-text-box'>
                 <h1 className='learning-text-title'>Creating A Game Loop</h1>
-                <p className='learning-text-body'>Since we will be constantly needing to update data and render graphics based on that data, we're gonna need some kind of structure to control the flow.
+                <p className='learning-text-body'>Since we will be constantly needing to update data and render graphics based on that data, 
+                we're gonna need some kind of structure to control the flow.
                 Let's set up a basic game loop to handle everything accordingly.<br/><br/>
                 
                 Game loops for anyone unfamiliar, are just a set of functions executed on startup 
                 and then constantly executed on a defined tick rate.<br/><br/>
                 
-                Let's setup a basic game loop in our index.js!<br/><br/>
+                Let's setup a basic game loop in our raycaster.js!<br/><br/>
                 
                 Now there's alot of opinions on how a game loop should be structured, for our purposes we really only need 
                 three functions.<br/><br/>
                 
-                - Start<br/>
+                - Init<br/>
                 - Update<br/>
                 - Render<br/><br/>
                 
@@ -74,13 +75,13 @@ function Setup() {
                 Update & Render will be the functions being called on a defined interval. 
                 They are gonna handle updating all the data and displaying graphics.<br/><br/>
                 
-                To start, let's just define our these three main functions.</p>
+                To start, let's just define these three main functions.</p>
             </div>
             <img src={img_2} alt="setting up three core functions" />
             <p className='learning-text-box'>Now, let's setup a load event listener on our window object. 
-            AddEventListener will take an IIFE (Immediately Invoked Function Expression) as the second arg.<br/><br/>
+            AddEventListener will take an IIFE (Immediately Invoked Function Expression) as the second argument.<br/><br/>
             
-            Inside this function, let's first make a single call to our Start() function. 
+            Inside this function, let's first make a single call to our Init() function. 
             This will make sure the functions only being executed once on load.
             </p>
             <img src={img_3} alt="load event listener" />
@@ -133,7 +134,7 @@ function Setup() {
             We can do this by using getElementById.<br/><br/>
 
             Canvas elements handle manipulation through a 'context', we can get that by using the getContext method as well.
-            Since we are working in a 2D space, we pass the string ‘2d’ into the getContext method</p>
+            Since we are working in a 2D space, we pass the string ‘2d’ into the getContext method.</p>
             <img src={img_7} alt="getting canvas elements" />
             <p className='learning-text-box'>Lets set our canvas dimensions using dot notation.<br/><br/>
 
@@ -148,7 +149,7 @@ function Setup() {
 
             Create a worldMap variable in the global scope with no assignment.</p>
             <img src={img_9} alt="creating worldMap variable" />
-            <p className='learning-text-box'>In the Start() function, let's just initialize our worldMap array to be 
+            <p className='learning-text-box'>In the Start() function, let's just initialize our worldMap array mapWidth * mapHeight in size and to be 
             filled with 0s.<br/><br/>
 
             We can use the array .fill() method.</p>
@@ -168,16 +169,18 @@ function Setup() {
             <p className='learning-text-box'>For beginners the way we are accessing each cell can be confusing but its alot 
             simpler than you think.<br/><br/>
 
-            We are going to be checking every cell inside of the nested loop, the way we want to identify which cell to access is by using worldMap[y * mapWidth + x]<br/><br/>
+            We are going to be checking every cell inside of the nested loop, the way we want to identify which cell to access is by 
+            using <b>worldMap[y * mapWidth + x]</b><br/><br/>
 
-            We start by checking y * mapWidth, this is going to get use the start of the current row, then adding x to that result can get us every cell within that row.<br/><br/>
+            We start by checking y * mapWidth, this is going to get use the start of the current row, then adding x to that result can get us any cell within that row.<br/><br/>
 
-            Using this method to check every cell in a given row, we can use a switch statement to define two cases: 0 & 1<br/><br/>
+            Using this method to check any cell in a given row, we can use a switch statement to define two cases: 0 & 1<br/><br/>
 
             You can use if statements and get the exact same result, I decided with a switch statement since I plan to scale this project in the future.<br/><br/>
             
             Inside of each switch case, we define the desired color for that value. I'm going with black for 0 and purple for 1. 
-            We can assign these colors using the context fillStyle property.<br/><br/>
+            We can assign these colors using the context fillStyle property. This is just a property to define the color to use for the next fill call to
+            our canvas.<br/><br/>
 
             If using the switch statement, be sure to break out of each case after assigning the fillStyle.</p>
             <img src={img_12} alt="accessing each cell in nested loop" />

@@ -22,6 +22,11 @@
     gap: 2vw;
 }
 
+.demo-screens
+{
+    padding-bottom: 5vh;
+}
+
 .demo-buttons > button
 {
     background-color: #00f8a3;
@@ -36,8 +41,13 @@
 .demo-text
 {
     color: #F5FEFD;
-    text-align: center;
-    margin-bottom: 5vh;
+}
+
+.demo-controls
+{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 2vh;
 }
 
 .landing-content
@@ -47,6 +57,7 @@
     text-align: center;
     justify-content: center; 
     color: #F5FEFD;
+    width: 60vw;
 }
 
 .landing-content > h1
@@ -56,5 +67,5 @@
 
 .landing-content > p
 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
