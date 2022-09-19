@@ -18,10 +18,15 @@ import img_14 from '../images/FOV/Drawing Rays/DR_3.png';
 import img_15 from '../images/FOV/Drawing Rays/DR_4.png';
 import img_16 from '../images/FOV/Drawing Rays/DR_5.png';
 import { useNavigate } from 'react-router';
+import { useEffect } from 'react';
 
 function Fov() {
 
     let navigate = useNavigate();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return(
         <div className='fov'>

@@ -38,10 +38,15 @@ import matrix from '../images/P_IC/Creating The Input Controller/matrix.svg';
 
 import Header from '../comps/Header.js';
 import { useNavigate } from 'react-router';
+import { useEffect } from 'react';
 
 function Player() {
 
     let navigate = useNavigate();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return (<div className="player">
         <Header />

@@ -1,6 +1,7 @@
 import './Setup.css';
 import Header from "../comps/Header.js";
 import { useNavigate } from 'react-router';
+import { useEffect } from 'react';
 import IMG_HTMLSETUP from '../images/Setup/Setting Up Our HTML/carbon(4).png';
 import img_2 from '../images/Setup/Creating A Game Loop/js.png';
 import img_3 from '../images/Setup/Creating A Game Loop/carbon(5).png';
@@ -18,6 +19,10 @@ import img_13 from '../images/Setup/Rendering The Tile Map/carbon(17).png';
 function Setup() {
 
     let navigate = useNavigate();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return(
         <div className='setup'>

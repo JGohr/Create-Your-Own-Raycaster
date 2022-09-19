@@ -1,6 +1,8 @@
 import './Final.css';
 import Header from '../comps/Header';
 
+import { useEffect } from 'react';
+
 import img_1 from '../images/Final/Drawing Collision/DC_1.png';
 import img_2 from '../images/Final/Drawing Collision/DC_2.png';
 import img_3 from '../images/Final/Drawing Collision/DC_3.png';
@@ -18,6 +20,11 @@ import img_14 from '../images/Final/Rendering The Scene/RS_10.png';
 import img_15 from '../images/Final/Rendering The Scene/RS_11.png';
 
 function Final() {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <div className='final'>
             <Header />

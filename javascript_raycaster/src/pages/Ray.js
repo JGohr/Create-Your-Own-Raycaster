@@ -27,10 +27,15 @@ import img_22 from '../images/RayProps/Section 4/CRD_22.png';
 import img_23 from '../images/RayProps/Section 4/CRD_23.png';
 import uss from '../images/RayProps/Section 4/USS_demo.PNG';
 import { useNavigate } from 'react-router';
+import { useEffect } from 'react';
 
 function Ray() {
 
     let navigate = useNavigate();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return(
         <div className='ray'>
