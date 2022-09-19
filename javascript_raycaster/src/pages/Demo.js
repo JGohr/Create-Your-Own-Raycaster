@@ -6,6 +6,8 @@ import './Demo.css';
 function Demo() {
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+
         const canvas = document.getElementById('grid');
         const ctx = canvas.getContext('2d');
         let canvasRect;
@@ -14,15 +16,15 @@ function Demo() {
 
         let worldMap;
 
-        let cellFilledColor = '#00a96f';
+        let cellFilledColor = '#6060ff';
         let cellNullColor = '#032b1d';
-        let rayColor = '';
+        let rayColor = '#54ff00';
         let colColor = '#FE2836';
         let playerColor = '#FE2836';
-        let horWallColor = '';
-        let verWallColor = '';
-        let skyColor = '#001b12';
-        let floorColor = '#00dddd';
+        let horWallColor = '#0000ff';
+        let verWallColor = '#6060ff';
+        let skyColor = '#000e09';
+        let floorColor = '#1b1b1b';
 
         const cellSize = 40;
         const mapHeight = 12;
@@ -295,7 +297,7 @@ function Demo() {
             {
                 renderCtx.fillStyle = skyColor;
                 renderCtx.fillRect(r, 0, 1, viewHeight / 2);
-                renderCtx.fillStyle = '#cac2b4';
+                renderCtx.fillStyle = floorColor;
                 renderCtx.fillRect(r, viewHeight / 2, 1, viewHeight);
 
                 let Ray = Player.rays[r];
@@ -309,9 +311,9 @@ function Demo() {
                 if(Ray.hit)
                 {
                     if(Ray.sideHit == 0)
-                        renderCtx.fillStyle = skyColor;
+                        renderCtx.fillStyle = horWallColor;
                     else if(Ray.sideHit == 1)
-                        renderCtx.fillStyle = floorColor;
+                        renderCtx.fillStyle = verWallColor;
 
                     renderCtx.fillRect(r, viewHeight / 2 - lineHeight / 2, 1, lineHeight);
                 }
@@ -348,7 +350,7 @@ function Demo() {
         }
 
         function drawRay() {
-            ctx.strokeStyle = '#54ff00';
+            ctx.strokeStyle = rayColor;
             for(let r in Player.rays)
             {
                 let Ray = Player.rays[r];
@@ -483,10 +485,6 @@ function Demo() {
 
     let navigate = useNavigate();
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
     return(
         <div className="demo">
             <div className="landing-content">
@@ -495,9 +493,9 @@ function Demo() {
                 rendering technique known as "Ray Casting”.<br/>
                 Going into concepts such as scalar projection, re-working pythagorean theorem, DDA line drawing algorithm and more to bring a 
                 resource for aspiring javascript developers to test their knowledge while creating a intriguing project.</p>
-                <div className='demo-buttons'>
-                    <button onClick={() => {window.open('https://github.com/JGohr/TileMap-Raycaster')}} id='source-btn'>View Source Code</button>
-                    <button onClick={() => {navigate('/learning-intro')}} id='navLanding'>Build This Project</button>
+                <div>
+                    <button onClick={() => {window.open('https://github.com/JGohr/TileMap-Raycaster')}} id='source-btn' className='learning-button'>View Source Code</button>
+                    <button onClick={() => {navigate('/learning-intro')}} id='navLanding' className='learning-button'>Build This Project</button>
                 </div>
             </div>
             <div className="demo-screens">
