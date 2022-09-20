@@ -1,6 +1,8 @@
 .final
 {
     background-color: #151515;
+    display: flex;
+    flex-direction: column;
 }
 
 #conclusion

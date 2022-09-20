@@ -25,11 +25,6 @@ a
     cursor: pointer;
 }
 
-.learning-text-box > a
-{
-    color: var(--green);
-}
-
 a:hover
 {
     color: var(--green);
@@ -132,5 +127,53 @@ img
 .header-links
 {
     display: flex;
-    gap: 1vw;
+    gap: 3vw;
 }
+
+@media screen and (max-width: 900px)
+{
+    .learning-text-box
+    {
+        text-align: center;
+        justify-content: center;
+        width: 100%;
+        padding: 0 3vw;
+        font-size: smaller;
+    }
+
+    .learning-button
+    {
+        align-self: center;
+    }
+
+    .learning-text-list
+    {
+        list-style-type: none;
+    }
+
+    img
+    {
+        width: 95vw;
+    }
+
+    .learning-nav-box
+    {
+        display: none;
+    }
+
+    .header-title > h1
+    {
+        font-size: 1rem;
+    }
+
+    .header-title > h2
+    {
+        font-size: .8rem;
+    }
+
+    .header-links
+    {
+        font-size: .8rem;
+    }
+}
+

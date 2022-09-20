@@ -1,4 +1,6 @@
 .ray
 {
     background: #151515;
+    display: flex;
+    flex-direction: column;
 }

@@ -2,12 +2,16 @@
 {
     background-color: #151515;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .intro-body
 {
     height: auto;
     padding-bottom: 2vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .learning-text-list
