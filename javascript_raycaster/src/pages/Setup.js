@@ -72,7 +72,7 @@ function Setup() {
                 - Update<br/>
                 - Render<br/><br/>
                 
-                Start will be a single function call to setup any data we need that should only be called once.<br/>
+                Init will be a single function call to setup any data we need that should only be called once.<br/>
                 Update & Render will be the functions being called on a defined interval. 
                 They are gonna handle updating all the data and displaying graphics.<br/><br/>
                 
@@ -142,7 +142,7 @@ function Setup() {
             Since these properties are also pixel values, we want to make sure we are multiplying our mapWidth and mapHeight 
             by cellSize.<br/><br/>
 
-            This will ensure we have enough total canvas space to fit our cells! We can do this within our start 
+            This will ensure we have enough total canvas space to fit our cells! We can do this within our Init 
             function since we only need to assign it on the initial load</p>
             <img src={img_8} alt="setting canvas dimensions using dot notation" />
             <p className='learning-text-box'>Our map is going to be based on an array of 0s and 1s so we should probably
@@ -150,7 +150,7 @@ function Setup() {
 
             Create a worldMap variable in the global scope with no assignment.</p>
             <img src={img_9} alt="creating worldMap variable" />
-            <p className='learning-text-box'>In the Start() function, let's just initialize our worldMap array mapWidth * mapHeight in size and to be 
+            <p className='learning-text-box'>In the Init() function, let's just initialize our worldMap array mapWidth * mapHeight in size and to be 
             filled with 0s.<br/><br/>
 
             We can use the array .fill() method.</p>
@@ -173,7 +173,7 @@ function Setup() {
             We are going to be checking every cell inside of the nested loop, the way we want to identify which cell to access is by 
             using <b>worldMap[y * mapWidth + x]</b><br/><br/>
 
-            We start by checking y * mapWidth, this is going to get use the start of the current row, then adding x to that result can get us any cell within that row.<br/><br/>
+            We start by checking y * mapWidth, this is going to get us the start of the current row, then adding x to that result can get us any cell within that row.<br/><br/>
 
             Using this method to check any cell in a given row, we can use a switch statement to define two cases: 0 & 1<br/><br/>
 

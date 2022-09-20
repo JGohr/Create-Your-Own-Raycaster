@@ -81,7 +81,7 @@ function Fov() {
             let's create a rays property on our players object that stores an array of ray objects.</p>
             <img src={img_4} alt="player object creation" />
             <p className='learning-text-box'>And since we have a function to generate rays for us, 
-            let's go to our start function and make a loop to push viewWidth rays to our players rays array.</p>
+            let's go to our Init function and make a loop to push viewWidth rays to our players rays array.</p>
             <img src={img_5} alt="push rays inside init function" />
             <p className='learning-text-box'>
             Easy enough. You can verify this is working by entering 'Player.rays' in your developer console.<br/><br/>
@@ -181,7 +181,7 @@ function Fov() {
             Using a ternary operator, we can compare the mapHeight and mapWidth distances. Whichever is greater we can store as the maxDist.<br/><br/>
 
             We want to multiply these by cellSize as well to get the pixel amount.
-            We can declare our variable in the global scope and assign it in our start function to stay organized.
+            We can declare our variable in the global scope and assign it in our Init function to stay organized.
             </p>
             <img src={img_13} alt="maxDist variable" />
             <p className='learning-text-box'>

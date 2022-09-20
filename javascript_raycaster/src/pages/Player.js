@@ -140,8 +140,8 @@ function Player() {
 
         We can make this dynamic by initializing our players x and y positions equal to (mapWidth * cellSize) / 2.<br/><br/>
 
-        Let's put this in the start function</p>
-        <img src={img_5} alt='adding dynamic player position to start function' />
+        Let's put this in the Init function</p>
+        <img src={img_5} alt='adding dynamic player position to Init function' />
 
         <p className='learning-text-box'>We should probably add some way for us to interact with this player object.
         Time to make a <b>input controller</b>.</p>
@@ -200,7 +200,7 @@ function Player() {
         If so, we toggle that pressed boolean.<br/><br/>
 
         We can use the same logic for the keyup event, this time setting pressed to false. Since we only need to assign the listeners once, 
-        let’s put them in the start function.</p>
+        let’s put them in the Init function.</p>
         <img src={img_7} alt="input controller keydown event listeners" />
         <p className='learning-text-box'>For mouse down, the syntax is almost identical, this time just switching the event.code for event.type.<br/><br/>
         And lastly for our mouseup listener, we want to make sure we are directly accessing our mousedown key in the input controller, 
@@ -491,7 +491,7 @@ function Player() {
 
         The reset functionality can be applied using the same function since it's returning an entire new array!<br/><br/>
 
-        In our Start function, assign a click event listener to call generate map when our reset button is pressed. 
+        In our Init function, assign a click event listener to call generate map when our reset button is pressed. 
         Remember we gave this am ID of reset in the setup of the HTML.
         </p>
         <img src={img_29} alt="reset button set inside init" />
