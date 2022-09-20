@@ -5,12 +5,7 @@
     align-items: center;
     height: 100vh;
     justify-content: center;
-    background: #0A0A0A;
-}
-
-#demo-header
-{
-    font-size: 1.5rem;
+    background: #0a0a0a;
 }
 
 .demo-buttons
@@ -22,25 +17,14 @@
     gap: 2vw;
 }
 
-.demo-screens
+.demo-screens > canvas
 {
-    padding-bottom: 5vh;
-}
-
-.demo-buttons > button
-{
-    background-color: #00f8a3;
-    border: none;
-    border-radius: 4px;
-    width: 150px;
-    height: 35px;
-    font-weight: 700;
-    cursor: pointer;
+    border: 3px solid #f7f7f7;
 }
 
 .demo-text
 {
-    color: #F5FEFD;
+    color: #f7f7f7;
 }
 
 .demo-controls
@@ -57,12 +41,17 @@
     text-align: center;
     justify-content: center; 
     color: #F5FEFD;
-    width: 60vw;
+    background-color: #0A0A0A;
+    width: 100%;
+    align-items: center;
+    height: auto;
 }
 
 .landing-content > h1
 {
     font-size: 3rem;
+    font-family: pixel;
+    color: #42ff45;
 }
 
 .landing-content > p
@@ -71,4 +60,36 @@
     line-height: 2.5vh;
     margin-top: .6vh;
     margin-bottom: 2.5vh;
+    width: 60vw;
+}
+
+#reset
+{
+    background-color: #6060ff;
+    border: none;
+    border-radius: 4px;
+    width: 150px;
+    height: 35px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#demo-header
+{
+    font-size: 1.5rem;
+}
+
+#controls, #demo-header
+{
+    font-family: pixel;
+}
+
+#grid
+{
+    border-right: none;
+}
+
+#render
+{
+    border-left: none;
 }
