@@ -12,7 +12,7 @@ function Header() {
         </div>
         <div className='header-links'>
             <a href='https://github.com/JGohr/TileMap-Raycaster'>Github Repo</a>
-            <a onClick={() => {navigate('/demo')}} href=''>Demo</a>
+            <a onClick={() => {navigate('/')}} href=''>Demo</a>
         </div>
     </header>
     );

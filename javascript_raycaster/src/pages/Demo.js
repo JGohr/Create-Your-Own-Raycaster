@@ -13,28 +13,23 @@ function Demo() {
         let canvasRect;
         const renderCanvas = document.getElementById('render');
         const renderCtx = renderCanvas.getContext('2d');
-
         let worldMap;
-
         let cellFilledColor = '#6060ff';
-        let cellNullColor = '#032b1d';
+        let cellNullColor = '#0c0c26';
         let rayColor = '#54ff00';
-        let colColor = '#FE2836';
-        let playerColor = '#FE2836';
+        let colColor = '#db001b';
+        let playerColor = '#db001b';
         let horWallColor = '#0000ff';
         let verWallColor = '#6060ff';
-        let skyColor = '#000e09';
+        let skyColor = '#0a0a0a';
         let floorColor = '#1b1b1b';
-
         const cellSize = 40;
         const mapHeight = 12;
         const mapWidth = 15;
         const viewWidth = 720;
         const viewHeight = 480;
-
         let maxDist;
         let fov = degToRadians(60);
-
         let gameLoop;
 
         const Player = {
