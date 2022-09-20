@@ -164,9 +164,9 @@ function Final() {
             This concept is known as vector projection and it's a really interesting topic. If you have interest in
             computer graphics or game development and are not aware of vector projection, check out these videos:<br/><br/>
 
-            <a href="https://www.youtube.com/watch?v=fqPiDICPkj8&ab_channel=FireflyLectures">FireflyLectures</a> - 2D Projection<br/><br/>
+            <a target={"_blank"} href="https://www.youtube.com/watch?v=fqPiDICPkj8&ab_channel=FireflyLectures">FireflyLectures</a> - 2D Projection<br/><br/>
 
-            <a href="https://www.youtube.com/watch?v=Rw70zkvqEiE&ab_channel=TheOrganicChemistryTutor">TheOrganicChemistryTutor</a> - 3D/Orthogonal Components<br/><br/>
+            <a target={"_blank"} href="https://www.youtube.com/watch?v=Rw70zkvqEiE&ab_channel=TheOrganicChemistryTutor">TheOrganicChemistryTutor</a> - 3D/Orthogonal Components<br/><br/>
 
             Multiplying these two values will give us the final distance we need to calculate our line height!<br/><br/>
 

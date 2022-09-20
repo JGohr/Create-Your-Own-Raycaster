@@ -485,13 +485,18 @@ function Demo() {
             <div className="landing-content">
                 <h1>Create Your Own Raycaster In Javascript</h1>
                 <p>An educational article on the concepts and implementation of the
-                rendering technique known as "Ray Casting”.<br/>
-                Going into concepts such as scalar projection, re-working pythagorean theorem, DDA line drawing algorithm and more to bring a 
-                resource for aspiring javascript developers to test their knowledge while creating a intriguing project.</p>
+                rendering technique known as "ray casting".
+                Bringing new knowledge tied to a intriguing project for aspiring javascript developers.
+                </p>
                 <div>
                     <button onClick={() => {window.open('https://github.com/JGohr/TileMap-Raycaster')}} id='source-btn' className='learning-button'>View Source Code</button>
                     <button onClick={() => {navigate('/learning-intro')}} id='navLanding' className='learning-button'>Build This Project</button>
                 </div>
+            </div>
+            <div className='mobile-demo'>
+                <p>Well this isn't good... <br/><br/>
+                Unfortunately the demo for this project isn't available for 
+                this device. Feel free to check out the source code to try it out for yourself!</p>
             </div>
             <div className="demo-screens">
                 <div className='demo-controls'>

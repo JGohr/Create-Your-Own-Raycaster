@@ -118,7 +118,7 @@ function Ray() {
 
             If the concept of working with slopes and breaking them down into components of delta X and delta Y is foreign, 
             I recommend using this video as a resource to aid in this learning process.<br/><br/>
-            <a href="https://www.youtube.com/watch?v=rpMu98yRk40&ab_channel=mathantics">https://www.youtube.com/watch?v=rpMu98yRk40&ab_channel=mathantics</a><br/><br/>
+            <a target={'blank'} href="https://www.youtube.com/watch?v=rpMu98yRk40&ab_channel=mathantics">https://www.youtube.com/watch?v=rpMu98yRk40&ab_channel=mathantics</a><br/><br/>
 
             Since we are getting the distance our ray travels per column of cells, we need to scale down the second variable as well.<br/><br/>
 
@@ -134,7 +134,7 @@ function Ray() {
             I hope this is all making sense so far, having previous knowledge of how slopes work is pretty crucial to this understanding.<br/><br/>
 
             Now I throw a curve ball. During my research on ray casting I came across a wonderful article by lodev.org<br/>
-            (<a href="https://lodev.org/cgtutor/raycasting.html#The_Basic_Idea_">https://lodev.org/cgtutor/raycasting.html#The_Basic_Idea_</a>)<br/><br/>
+            (<a target={'blank'} href="https://lodev.org/cgtutor/raycasting.html#The_Basic_Idea_">https://lodev.org/cgtutor/raycasting.html#The_Basic_Idea_</a>)<br/><br/>
 
             This article goes in depth on how he approaches the ray casting implementation as well as the theory behind all his workings.<br/><br/>
             I place emphasis on this article since the author actually explains how we can optimize this formula!

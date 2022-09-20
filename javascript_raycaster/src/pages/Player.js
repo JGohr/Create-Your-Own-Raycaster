@@ -115,7 +115,7 @@ function Player() {
         The next thing context.arc requires us to do is make a call to context.beginPath().<br/><br/>
 
         Don't worry about the underlying meaning for this now, just know we need to call beginPath() whenever we want to render something new like a line or arc in this instance.<br/>
-        Check out <a href='https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/beginPath'>MDN Context.beginPath()</a> for more info.<br/><br/>
+        Check out <a target={"_blank"} href='https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/beginPath'>MDN Context.beginPath()</a> for more info.<br/><br/>
 
         Context.arc takes in 5 arguments: x, y, radius, startAngle, endAngle<br/><br/>
 
@@ -370,7 +370,7 @@ function Player() {
         For example, if our screen is 1000px wide and our canvas is centered and 500px wide.
         getBoundingClientRect() left and right values would be 250px each since there is 250px on either side of the canvas.<br/><br/>
 
-        For a better understanding of getBoundingClientRect visit here: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect">MDN getBoundingClientRect</a><br/><br/>
+        For a better understanding of getBoundingClientRect visit here: <a target={"_blank"} href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect">MDN getBoundingClientRect</a><br/><br/>
 
         We can take our mouse position, subtract the canvas left and top values to get our position 
         within the actual tile map, assuming we are in it.<br/><br/>
