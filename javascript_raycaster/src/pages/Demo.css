@@ -58,9 +58,16 @@
 {
     font-size: 1.2rem;
     line-height: 2.5vh;
-    margin-top: .6vh;
+    margin-top: 1.3vh;
     margin-bottom: 2.5vh;
     width: 60vw;
+}
+
+.mobile-demo
+{
+    display: none;
+    text-align: center;
+    color: #f7f7f7;
 }
 
 #reset
@@ -92,4 +99,42 @@
 #render
 {
     border-left: none;
+}
+
+@media screen and (max-width: 1325px)  {
+    
+    .demo-screens
+    {
+        display: none;
+    }
+
+    .mobile-demo
+    {
+        display: block;
+        margin-top: 5vh;
+        width: 75vw;
+    }
+}
+
+@media screen and (max-width: 810px)  {
+    
+    .landing-content > h1
+    {
+        font-size: 2rem;
+    }
+
+    .landing-content > p
+    {
+        font-size: .8rem;
+    }
+
+}
+
+@media screen and (max-width: 430px)  {
+    
+    .landing-content > p
+    {
+        width: 75vw;
+    }
+
 }
